@@ -40,7 +40,6 @@ module Fourier
               .with(
                 path: sources_path,
                 product: "swift-doc",
-                binary_name: "swift-doc",
                 output_directory: temporary_output_directory
               )
             FileUtils

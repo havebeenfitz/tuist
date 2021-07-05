@@ -38,7 +38,6 @@ module Fourier
               .with(
                 path: sources_path,
                 product: "xcbeautify",
-                binary_name: "xcbeautify",
                 output_directory: temporary_output_directory
               )
             FileUtils

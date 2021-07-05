@@ -44,11 +44,13 @@ module Fourier
                   output_zip_path,
                   "tuist",
                   "ProjectDescription.swiftmodule/",
+                  "ProjectDescription.swiftinterface",
                   "libProjectDescription.dylib",
-                  "ProjectDescription.swiftinterface/",
+                  "libProjectDescription.dylib.dSYM",
                   "ProjectAutomation.swiftmodule/",
+                  "ProjectAutomation.swiftinterface",
                   "libProjectAutomation.dylib",
-                  "ProjectAutomation.swiftinterface/",
+                  "libProjectAutomation.dylib.dSYM",
                   "Templates",
                   "vendor"
                 )
@@ -70,17 +72,9 @@ module Fourier
 
           def build_project_library(name:, output_directory:, swift_build_directory:)
             Utilities::Output.section("Building #{name}...")
-            Utilities::System.system(
-              "swift", "build",
-              "--product", name,
-              "--configuration", "release",
-              "--build-path", swift_build_directory,
-              "--package-path", Constants::ROOT_DIRECTORY
-            )
             Utilities::SwiftPackageManager.build_fat_release_library(
               path: Constants::ROOT_DIRECTORY,
               product: name,
-              binary_name: "lib#{name}.dylib",
               output_directory: output_directory,
               swift_build_directory: swift_build_directory
             )
